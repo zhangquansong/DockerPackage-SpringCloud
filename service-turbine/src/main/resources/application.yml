@@ -1,0 +1,14 @@
+spring:
+  application.name: service-turbine
+server:
+  port: 8999
+security.basic.enabled: false
+turbine:
+  aggregator:
+    clusterConfig:  default   #SERVICE-FEIGN
+  appConfig: service-feign,api-web,service-ribbon,service-zuul
+  clusterNameExpression: new String("default")
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/,http://eureka-server-2:8762/eureka/,http://eureka-server-3:8763/eureka/
