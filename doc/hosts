@@ -1,0 +1,14 @@
+127.0.0.1 eureka-server-peer1
+127.0.0.1 eureka-server-peer2
+127.0.0.1 eureka-server-peer3
+
+127.0.0.1 eureka-server
+127.0.0.1 eureka-server1
+127.0.0.1 eureka-server2
+127.0.0.1 eureka-server3
+
+127.0.0.1 server-zipkin
+
+127.0.0.1 eureka-server-2
+127.0.0.1 eureka-server-3
+

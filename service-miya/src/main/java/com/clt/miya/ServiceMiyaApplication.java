@@ -32,7 +32,7 @@ public class  ServiceMiyaApplication {
 	public String info(){
 		LOG.log(Level.INFO, "info is being called");
 		//return restTemplate.getForObject("http://localhost:8769/api-a/ribbon?name=123&token=2",String.class);
-		return restTemplate.getForObject("http://localhost:8769/api-b/ribbon?name=123&token=2",String.class);
+		return restTemplate.getForObject("http://service-zuul:8769/api-b/ribbon?name=123&token=2",String.class);
 
 	}
 
