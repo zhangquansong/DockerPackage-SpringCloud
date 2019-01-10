@@ -14,21 +14,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RefreshScope
 public class ConfigClientApplication {
 
-	@Value("${foo}")
-	String foo;
+    @Value("${foo}")
+    String foo;
 
-	@Value("${name}")
-	private  String name;
-	@Value("${age}")
-	private  String age;
-	@Value("${version}")
-	private  String version="开发环境";
-	public static void main(String[] args) {
-		SpringApplication.run(ConfigClientApplication.class, args);
-	}
+    @Value("${name}")
+    private String name;
+    @Value("${age}")
+    private String age;
+    @Value("${version}")
+    private String version = "开发环境";
 
-	@RequestMapping(value = "/hi")
-	public String hi(){
-		return foo+"--你好，我是"+name+",年龄："+age+"岁。当前环境："+version;
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ConfigClientApplication.class, args);
+    }
+
+    @RequestMapping(value = "/hi")
+    public String hi() {
+        return foo + "--你好，我是" + name + ",年龄：" + age + "岁。当前环境：" + version;
+    }
 }

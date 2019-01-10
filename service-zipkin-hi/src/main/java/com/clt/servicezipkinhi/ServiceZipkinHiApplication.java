@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,36 +17,37 @@ import java.util.logging.Logger;
 @RestController
 public class ServiceZipkinHiApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ServiceZipkinHiApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ServiceZipkinHiApplication.class, args);
+    }
 
-	private static final Logger LOG = Logger.getLogger(ServiceZipkinHiApplication.class.getName());
+    private static final Logger LOG = Logger.getLogger(ServiceZipkinHiApplication.class.getName());
 
 
-	@Autowired
-	private RestTemplate restTemplate;
+    @Autowired
+    private RestTemplate restTemplate;
 
-	@Bean
-	public RestTemplate getRestTemplate(){
-		return new RestTemplate();
-	}
+    @Bean
+    public RestTemplate getRestTemplate() {
+        return new RestTemplate();
+    }
 
-	@RequestMapping("/hi")
-	public String callHome(){
-		LOG.log(Level.INFO, "calling trace service-zipkin-hi  ");
-		return restTemplate.getForObject("http://localhost:8764/ribbon", String.class);
-	}
-	@RequestMapping("/info")
-	public String info(){
-		LOG.log(Level.INFO, "calling trace service-hi ");
+    @RequestMapping("/hi")
+    public String callHome() {
+        LOG.log(Level.INFO, "calling trace service-zipkin-hi  ");
+        return restTemplate.getForObject("http://localhost:8764/ribbon", String.class);
+    }
 
-		return "i'm service-zipkin-hi";
+    @RequestMapping("/info")
+    public String info() {
+        LOG.log(Level.INFO, "calling trace service-hi ");
 
-	}
+        return "i'm service-zipkin-hi";
 
-	@Bean
-	public AlwaysSampler defaultSampler(){
-		return new AlwaysSampler();
-	}
+    }
+
+    @Bean
+    public AlwaysSampler defaultSampler() {
+        return new AlwaysSampler();
+    }
 }

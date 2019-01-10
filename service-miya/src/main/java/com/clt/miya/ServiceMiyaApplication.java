@@ -13,34 +13,34 @@ import java.util.logging.Logger;
 
 @SpringBootApplication
 @RestController
-public class  ServiceMiyaApplication {
+public class ServiceMiyaApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ServiceMiyaApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ServiceMiyaApplication.class, args);
+    }
 
-	private static final Logger LOG = Logger.getLogger(ServiceMiyaApplication.class.getName());
+    private static final Logger LOG = Logger.getLogger(ServiceMiyaApplication.class.getName());
 
 
-	@RequestMapping("/hi")
-	public String home(){
-		LOG.log(Level.INFO, "hi is being called");
-		return "hi i'm miya!";
-	}
+    @RequestMapping("/hi")
+    public String home() {
+        LOG.log(Level.INFO, "hi is being called");
+        return "hi i'm miya!";
+    }
 
-	@RequestMapping("/miya")
-	public String info(){
-		LOG.log(Level.INFO, "info is being called");
-		//return restTemplate.getForObject("http://localhost:8769/api-a/ribbon?name=123&token=2",String.class);
-		return restTemplate.getForObject("http://service-zuul:8769/api-b/ribbon?name=123&token=2",String.class);
+    @RequestMapping("/miya")
+    public String info() {
+        LOG.log(Level.INFO, "info is being called");
+        //return restTemplate.getForObject("http://localhost:8769/api-a/ribbon?name=123&token=2",String.class);
+        return restTemplate.getForObject("http://service-zuul:8769/api-b/ribbon?name=123&token=2", String.class);
 
-	}
+    }
 
-	@Autowired
-	private RestTemplate restTemplate;
+    @Autowired
+    private RestTemplate restTemplate;
 
-	@Bean
-	public RestTemplate getRestTemplate(){
-		return new RestTemplate();
-	}
+    @Bean
+    public RestTemplate getRestTemplate() {
+        return new RestTemplate();
+    }
 }

@@ -12,8 +12,8 @@ public class FeignRibbonController {
     @Autowired
     FeignRibbonService feignService;
 
-    @RequestMapping(value = "/ribbon",method = RequestMethod.GET)
-    public String ribbon(@RequestParam String name){
+    @RequestMapping(value = "/ribbon", method = RequestMethod.GET)
+    public String ribbon(@RequestParam String name) {
         return feignService.ribbon(name);
     }
 }
